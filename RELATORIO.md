@@ -63,22 +63,22 @@ Os valores a seguir estão expressos em nanossegundos. Valores menores indicam m
 
 | \(n\) | Inserção | Intercalação | `sorted()` |
 |---:|---:|---:|---:|
-| 5 | 3.480 | 9.320 | 6.790 |
-| 10 | 5.640 | 17.470 | 17.020 |
-| 20 | 17.160 | 38.660 | 39.080 |
-| 30 | 37.370 | 63.250 | 53.440 |
-| 50 | 92.750 | 112.210 | 102.990 |
-| 75 | 236.990 | 194.830 | 192.820 |
-| 100 | 444.850 | 313.490 | 306.560 |
-| 200 | 1.469.580 | 517.520 | 611.380 |
-| 500 | 9.567.310 | 1.421.820 | 1.838.690 |
-| 1000 | 40.539.260 | 3.138.570 | 4.295.770 |
+| 5 | 3.530 | 9.350 | 6.750 |
+| 10 | 5.620 | 19.610 | 16.910 |
+| 20 | 17.150 | 38.910 | 40.250 |
+| 30 | 37.180 | 62.890 | 55.890 |
+| 50 | 98.460 | 113.600 | 113.990 |
+| 75 | 227.910 | 182.020 | 211.120 |
+| 100 | 381.020 | 243.860 | 299.060 |
+| 200 | 1.475.360 | 529.900 | 655.320 |
+| 500 | 9.471.980 | 1.427.820 | 1.973.420 |
+| 1000 | 40.556.970 | 3.324.830 | 4.381.800 |
 
 ![Gráfico de tempos médios](dados/grafico_tempos.svg)
 
 **Interpretação.** Nas entradas menores, a ordenação por inserção apresentou os menores tempos médios deste experimento. Isso é compatível com sua implementação simples e com a ausência do custo de divisão recursiva e intercalação.
 
-A partir de \(n=75\), a ordenação por intercalação passou a apresentar menor tempo médio do que a ordenação por inserção. A diferença tornou-se mais expressiva nas listas maiores: para \(n=1000\), o tempo médio da inserção foi de aproximadamente 40,54 milhões de nanossegundos, enquanto o da intercalação foi de aproximadamente 3,14 milhões.
+A partir de \(n=75\), a ordenação por intercalação passou a apresentar menor tempo médio do que a ordenação por inserção. A diferença tornou-se mais expressiva nas listas maiores: para \(n=1000\), o tempo médio da inserção foi de aproximadamente 40,56 milhões de nanossegundos, enquanto o da intercalação foi de aproximadamente 3,32 milhões.
 
 Esse comportamento é coerente com as complexidades esperadas: o custo da inserção cresce quadraticamente em entradas aleatórias, enquanto o Merge Sort apresenta crescimento da ordem de \(n\log n\).
 
@@ -111,7 +111,7 @@ A contagem de `sorted()` permaneceu próxima à da intercalação nas entradas m
 
 ### 5.1. A partir de qual tamanho a intercalação se torna mais rápida?
 
-Neste experimento, a intercalação apresentou menor tempo médio do que a inserção a partir de **\(n=75\)**, considerando os tamanhos testados.
+Neste experimento, a intercalação apresentou menor tempo médio do que a inserção a partir de **\(n=75\)**, considerando os tamanhos testados. Em \(n=50\), a inserção ainda foi mais rápida (98.460 ns contra 113.600 ns); em \(n=75\), a intercalação passou a ser mais rápida (182.020 ns contra 227.910 ns).
 
 Esse valor não deve ser interpretado como um limite universal. O ponto de transição pode mudar conforme o computador, a implementação, os dados de entrada e o método de medição. O resultado indica apenas onde a vantagem apareceu nas condições deste experimento.
 
