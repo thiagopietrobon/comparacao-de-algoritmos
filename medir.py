@@ -173,7 +173,7 @@ def calcular_medias(linhas):
 
 
 def gerar_grafico(medias, metrica, titulo, nome_arquivo):
-    """Gera um grafico SVG a partir das medias calculadas."""
+    """Gera um grafico SVG com escalas numericas proporcionais."""
 
     cores = {
         "insercao": "#c0392b",
@@ -200,17 +200,17 @@ def gerar_grafico(medias, metrica, titulo, nome_arquivo):
         for tamanho in TAMANHOS
     )
 
-    # Evita divisao por zero.
+    # Evita divisao por zero na escala vertical.
     if maior_valor == 0:
         maior_valor = 1
 
-    def coordenada_x(indice):
-        if len(TAMANHOS) == 1:
-            return margem_esquerda + area_largura / 2
+    # Escala horizontal proporcional ao tamanho real da entrada.
+    maior_tamanho = max(TAMANHOS) or 1
 
+    def coordenada_x(tamanho):
         return (
             margem_esquerda
-            + indice * area_largura / (len(TAMANHOS) - 1)
+            + tamanho * area_largura / maior_tamanho
         )
 
     def coordenada_y(valor):
@@ -269,15 +269,24 @@ def gerar_grafico(medias, metrica, titulo, nome_arquivo):
         f'y2="{altura - margem_inferior}" stroke="#333333"/>'
     )
 
-    # Rotulos do eixo horizontal.
-    for indice, tamanho in enumerate(TAMANHOS):
-        x = coordenada_x(indice)
+    # Marcas regulares do eixo horizontal.
+    quantidade_marcas_x = 5
+
+    for indice in range(quantidade_marcas_x + 1):
+        tamanho_marca = maior_tamanho * indice / quantidade_marcas_x
+        x = coordenada_x(tamanho_marca)
+
+        partes.append(
+            f'<line x1="{x:.2f}" y1="{margem_superior}" '
+            f'x2="{x:.2f}" y2="{altura - margem_inferior}" '
+            'stroke="#eeeeee" stroke-width="1"/>'
+        )
 
         partes.append(
             f'<text x="{x:.2f}" '
             f'y="{altura - margem_inferior + 25}" '
             'text-anchor="middle" font-family="sans-serif" '
-            f'font-size="12">{tamanho}</text>'
+            f'font-size="12">{tamanho_marca:.0f}</text>'
         )
 
     # Rotulos dos eixos.
@@ -306,9 +315,9 @@ def gerar_grafico(medias, metrica, titulo, nome_arquivo):
     for algoritmo in algoritmos:
         pontos = []
 
-        for indice, tamanho in enumerate(TAMANHOS):
+        for tamanho in TAMANHOS:
             valor = medias[(algoritmo, tamanho)][metrica]
-            x = coordenada_x(indice)
+            x = coordenada_x(tamanho)
             y = coordenada_y(valor)
             pontos.append((x, y))
 
