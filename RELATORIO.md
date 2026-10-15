@@ -162,7 +162,7 @@ Por fim, `sorted()` apresentou um desempenho competitivo, servindo como referên
 Para executar novamente os testes:
 
 ```bash
-python -m unittest teste.py
+python -m unittest testes.py
 ```
 
 Para gerar novas medições, gráficos e tabelas:
