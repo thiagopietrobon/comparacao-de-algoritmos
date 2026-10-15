@@ -63,12 +63,12 @@ As tabelas, os gráficos e a interpretação dos resultados estão disponíveis 
 ```text
 comparacao-de-algoritmos/
 ├── ordenacao.py
-├── teste.py
+├── testes.py
 ├── medir.py
 ├── README.md
 ├── RELATORIO.md
 └── dados/
-    ├── dados.cvs
+    ├── dados.csv
     ├── grafico_tempos.svg
     └── grafico_comparacoes.svg
 ```
@@ -76,7 +76,7 @@ comparacao-de-algoritmos/
 | Arquivo | Responsabilidade |
 |---|---|
 | `ordenacao.py` | Implementa os algoritmos e suas versões com contagem de comparações. |
-| `teste.py` | Contém testes automatizados para diferentes condições de entrada. |
+| `testes.py` | Contém testes automatizados para diferentes condições de entrada. |
 | `medir.py` | Executa os experimentos, calcula médias e gera os arquivos de resultados. |
 | `dados/` | Armazena os dados coletados e os gráficos produzidos. |
 | `RELATORIO.md` | Apresenta os resultados e discute as conclusões do experimento. |
@@ -93,7 +93,7 @@ comparacao-de-algoritmos/
 Na pasta do projeto, execute:
 
 ```bash
-python -m unittest teste.py
+python -m unittest testes.py
 ```
 
 Os testes verificam casos como lista vazia, elemento único, elementos iguais, lista já ordenada, lista em ordem inversa e lista aleatória.
