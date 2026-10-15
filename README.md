@@ -100,11 +100,15 @@ Os testes verificam casos como lista vazia, elemento único, elementos iguais, l
 
 ### 2. Executar o experimento
 
+Execute o comando abaixo para realizar as medições:
+
 ```bash
 python medir.py
 ```
 
-Esse comando executa as medições e recria os dados, os gráficos e o relatório. Como o relatório é gerado automaticamente, eventuais alterações manuais em `RELATORIO.md` serão substituídas na próxima execução.
+O script executa os experimentos, calcula as médias, salva os resultados individuais em `dados/dados.csv` e gera os gráficos de tempo médio e de comparações médias.
+
+O arquivo `RELATORIO.md` é mantido separado do processo de medição e deve ser atualizado manualmente quando os resultados do experimento forem alterados.
 
 ## 💡 Principais questões investigadas
 
