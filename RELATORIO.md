@@ -63,22 +63,22 @@ Os valores a seguir estão expressos em nanossegundos. Valores menores indicam m
 
 | \(n\) | Inserção | Intercalação | `sorted()` |
 |---:|---:|---:|---:|
-| 5 | 3.510 | 8.780 | 6.920 |
-| 10 | 7.820 | 19.540 | 19.980 |
-| 20 | 22.030 | 48.130 | 69.420 |
-| 30 | 49.000 | 78.620 | 74.200 |
-| 50 | 97.090 | 113.960 | 115.830 |
-| 75 | 232.330 | 188.440 | 210.210 |
-| 100 | 363.360 | 235.750 | 284.020 |
-| 200 | 1.472.610 | 536.590 | 702.100 |
-| 500 | 9.918.260 | 1.502.770 | 2.340.190 |
-| 1000 | 42.275.670 | 3.689.390 | 4.916.060 |
+| 5 | 3.480 | 9.320 | 6.790 |
+| 10 | 5.640 | 17.470 | 17.020 |
+| 20 | 17.160 | 38.660 | 39.080 |
+| 30 | 37.370 | 63.250 | 53.440 |
+| 50 | 92.750 | 112.210 | 102.990 |
+| 75 | 236.990 | 194.830 | 192.820 |
+| 100 | 444.850 | 313.490 | 306.560 |
+| 200 | 1.469.580 | 517.520 | 611.380 |
+| 500 | 9.567.310 | 1.421.820 | 1.838.690 |
+| 1000 | 40.539.260 | 3.138.570 | 4.295.770 |
 
 ![Gráfico de tempos médios](dados/grafico_tempos.svg)
 
 **Interpretação.** Nas entradas menores, a ordenação por inserção apresentou os menores tempos médios deste experimento. Isso é compatível com sua implementação simples e com a ausência do custo de divisão recursiva e intercalação.
 
-A partir de \(n=75\), a ordenação por intercalação passou a apresentar menor tempo médio do que a ordenação por inserção. A diferença tornou-se mais expressiva nas listas maiores: para \(n=1000\), o tempo médio da inserção foi de aproximadamente 42,28 milhões de nanossegundos, enquanto o da intercalação foi de aproximadamente 3,69 milhões.
+A partir de \(n=75\), a ordenação por intercalação passou a apresentar menor tempo médio do que a ordenação por inserção. A diferença tornou-se mais expressiva nas listas maiores: para \(n=1000\), o tempo médio da inserção foi de aproximadamente 40,54 milhões de nanossegundos, enquanto o da intercalação foi de aproximadamente 3,14 milhões.
 
 Esse comportamento é coerente com as complexidades esperadas: o custo da inserção cresce quadraticamente em entradas aleatórias, enquanto o Merge Sort apresenta crescimento da ordem de \(n\log n\).
 
@@ -171,4 +171,4 @@ Para gerar novas medições, gráficos e tabelas:
 python medir.py
 ```
 
-O script utiliza a semente `20261015`, realiza dez repetições para cada tamanho e gera os arquivos de resultados automaticamente. Os valores e as conclusões deste relatório correspondem à execução registrada no repositório; após novas medições, é necessário revisar a análise conforme os resultados atualizados.
+O script utiliza a semente `20261015`, realiza dez repetições para cada tamanho e grava as medições individuais em `dados/dados.csv`, além de gerar os gráficos. As tabelas deste relatório são mantidas manualmente e devem ser atualizadas a partir do CSV após uma nova execução. Os valores apresentados aqui foram conferidos com o arquivo de dados atual do repositório.
